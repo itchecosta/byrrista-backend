@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -11,10 +13,13 @@ const server = http.Server(app);
 
 setupWebsocket(server);
 
-mongoose.connect('mongodb+srv://byrista:byristanew123@cluster0-3lqgo.mongodb.net/byrista?retryWrites=true&w=majority', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(
+  process.env.MONGO_URL, 
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
+);
 
 app.use(cors());
 app.use(express.json());
