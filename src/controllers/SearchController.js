@@ -22,6 +22,8 @@ module.exports = {
       },
     });
 
+    console.log(business)
+
     return response.json({ business });
   }
 }
